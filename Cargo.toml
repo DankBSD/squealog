@@ -1,0 +1,19 @@
+[package]
+name = "squealogd"
+version = "0.1.0"
+license = "Unlicense"
+authors = ["Greg V <greg@unrelenting.technology>"]
+edition = "2021"
+
+[dependencies]
+libc = "0.2"
+chrono = "0.4"
+anyhow = "1.0"
+syslog_loose = "0.16"
+nom = "7.1" # keep same version as syslog_loose's dependency to avoid duplication
+rusqlite = { version = "0.27", features = ["modern_sqlite", "chrono"] }
+rusqlite_migration = "0.5"
+polling = "2.2"
+# listenfd = "0.5"
+listenfd = { git = "https://github.com/unrelentingtech/listenfd", branch = "udgram" }
+systemstat = "0.1"

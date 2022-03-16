@@ -1,0 +1,16 @@
+CREATE TABLE log (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	facility INTEGER,
+	severity INTEGER,
+	socket TEXT NOT NULL,
+	appname TEXT,
+	pid INTEGER,
+	time TEXT,
+	msg TEXT NOT NULL,
+	sdata TEXT
+) STRICT;
+
+CREATE TRIGGER delete_old AFTER INSERT ON log
+BEGIN
+	DELETE FROM log where id < NEW.id - 16777216;
+END;
